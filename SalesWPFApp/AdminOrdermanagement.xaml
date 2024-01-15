@@ -1,0 +1,140 @@
+﻿<Window x:Class="SalesWPFApp.AdminOrdermanagement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesWPFApp"
+        mc:Ignorable="d"
+        Title="22_NguyenKhanhToan_AdminOrdermanagement" Width="800">
+    <Grid>
+        <DockPanel VerticalAlignment="Top" Margin="10">
+            <Grid Height="538">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBlock FontSize="20" Margin="0, 0, 20, 0">
+                        From
+                    </TextBlock>
+                    <DatePicker Margin="0, 0, 20, 0" 
+                                Width="150" Height="30"
+                                Name="dateFrom"
+                                />
+                    
+                    <TextBlock FontSize="20"  Margin="0, 0, 20, 0">
+                        To
+                    </TextBlock>
+                    <DatePicker Width="150" Height="30" Margin="0, 0, 20, 0" 
+                                Name="dateTo"/>
+                    <Button 
+                    Width="80" 
+                    Height="30" 
+                    Background="#FFDB9333" 
+                    Margin="0, 0, 20, 0" 
+                    Name="btnSearch"
+                    Click="btnSearch_Click">
+                        Search
+                    </Button>
+                </StackPanel>
+                <!--StackPanel for Label and TextBox controls-->
+                <StackPanel Background="LightBlue" Orientation ="Vertical" Grid.Row="1" HorizontalAlignment="Left" Width="400">
+                    <Label Name="lbTitle" Foreground="Red" 
+                           FontWeight="DemiBold" 
+                           FontSize="20" Content="Order Information" />
+                    <Label Content="Order Id"/>
+                    <TextBox
+                        Name="txtOrderId" 
+                        HorizontalAlignment="Stretch" 
+                        Height="24"
+                        Text="{Binding Path=OrderId, Mode=OneWay}"
+                        DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}" />
+
+                    <Label Content="Member Id" />
+                    <TextBox Name="txtMemberId"
+                             HorizontalAlignment="Stretch"
+                             Height="24"
+                             Text="{Binding Path=MemberId, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}" />
+
+                    <Label Content="Order Date" />
+                    <DatePicker Name="orderDate" 
+                             HorizontalAlignment="Stretch"
+                             Height="24"
+                             Text="{Binding Path=RequierdDate, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvOrder,Path=SelectedItem}" />
+                    
+                    <Label Content="Required Date" />
+                    <DatePicker Name="dpRequiredDate" 
+                             HorizontalAlignment="Stretch"
+                             Height="24"
+                             Text="{Binding Path=RequierdDate, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvOrder,Path=SelectedItem}" />
+
+                    <Label Content="ShippedDate" />
+                    <DatePicker Name="dpShipDate" HorizontalAlignment="Stretch"
+                             Height="24"
+                             Text="{Binding Path=ShippedDate, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvOrder,Path=SelectedItem}" />
+
+                    <Label Content="Freight" />
+                    <TextBox Name="txtFreight" HorizontalAlignment="Stretch"
+                             Height="24"
+                             Text="{Binding Path=Freight, Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvOrder,Path=SelectedItem}" />
+                </StackPanel>
+                <!--StackPanel for Button controls-->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button x:Name="btnLoad" 
+                            Margin="10" 
+                            Width="80" 
+                            Content="Load"
+                            Click="btnLoad_Click"/>
+
+                    <Button x:Name="btnInsert" 
+                            Margin="10" Width="80" 
+                            Content="Insert"
+                            Click="btnInsert_Click"/>
+
+                    <Button x:Name="btnUpdate" 
+                            Margin="10" 
+                            Width="80" 
+                            Content="Update"
+                            Click="btnUpdate_Click"/>
+
+                    <Button x:Name="btnDelete" 
+                            Margin="10" 
+                            Width="80" 
+                            Content="Delete"
+                            Click="btnDelete_Click"/>
+                </StackPanel>
+                <!-- ListView control-->
+                <ListView Grid.Row="3" Name="lvOrder" Width="Auto" Height="Auto" >
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Order Id" Width="100"
+                            DisplayMemberBinding="{Binding Path=OrderId }"/>
+                            <GridViewColumn Header="Mmeber Id" Width="100"
+                                            DisplayMemberBinding="{Binding Path=MemberId }"/>
+                            <GridViewColumn Header="Order Date" Width="150"
+                                            DisplayMemberBinding="{Binding Path=OrderDate}"/>
+                            <GridViewColumn Header="Required Date" Width="120"
+                                            DisplayMemberBinding="{Binding Path=RequierdDate}"/>
+                            <GridViewColumn Header="Shipped Date" Width="100"
+                                            DisplayMemberBinding="{Binding Path=ShippedDate}"/>
+                            <GridViewColumn Header="Freght" Width="100"
+                                            DisplayMemberBinding="{Binding Path=Freight}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+                <!-- Button control-->
+                <Button Grid.Row="4" x:Name="btnClose" Margin="10"
+                    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                    Width="80" Content="Close" Click="btnClose_Click" />
+            </Grid>
+        </DockPanel>
+    </Grid>
+</Window>
