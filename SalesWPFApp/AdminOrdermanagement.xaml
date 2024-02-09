@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SalesWPFApp"
         mc:Ignorable="d"
-        Title="22_NguyenKhanhToan_AdminOrdermanagement" Width="800">
+        Title="AdminOrdermanagement" Width="800">
     <Grid>
         <DockPanel VerticalAlignment="Top" Margin="10">
             <Grid Height="538">
